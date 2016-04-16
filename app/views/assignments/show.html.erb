@@ -1,0 +1,38 @@
+<header>
+    <h1 class="welcome_text"><%= @assignment.topic %></h1>    
+</header>
+<section class="section_light">
+    <div class="row">
+        <div id="container">
+            <% @assignment.aimages.each do |aimage| %>
+                <div class='box photo col2'>
+                    <a href="#"><%= image_tag(aimage.image.url,alt:"desc")%></a>
+                </div>
+            <%end%>
+        </div>
+    </div>
+        <div id="container">
+    <h4>Practical Info</h4>
+
+    <div class="row">
+      <div class="twelve columns">
+
+      <dl class="tabs three-up">
+        <dd class="active"><a href="#simple1">Teacher</a></dd>
+        <dd><a href="#simple2">Description</a></dd>
+      </dl>
+      <ul class="tabs-content">
+        <li class="active" id="simple1Tab"><%=simple_format(@assignment.teacher)%></li>
+        <li id="simple2Tab"><%=simple_format(@assignment.description)%></li>
+      </ul>
+
+      </div>
+    </div>
+    <%= link_to "Edit",edit_assignment_path(@assignment),class:"button"%>
+    <%= link_to "Delete",@assignment,method: :delete,data:{confirm:"Are you sure?"},class:"button"%>
+    <%= link_to "Back",:back,class:"button"%>
+ 	<br>
+</section>
+
+
+

@@ -1,0 +1,18 @@
+=simple_form_for(@practical,html:{multipart: true}) do |f|
+	=f.input :aim, label: "Aim", class: "form-control ",placeholder:"Aim is first Impression"
+	%br/
+	=f.collection_select :subject_id, Subject.all,:id,:name, {promt: "Choose a Subject or Add Subject"},class:"form-control"
+	%br/
+	=f.collection_select :college_id, College.all,:id,:name, {promt: "Choose a Subject or Add Subject"},class:"form-control"
+	%br/
+	=f.input :description, label:"Description", input_html:{class:"tinymce"},placeholder:"Describe Your Practical"
+	%br/
+	%h2 Images
+	#tasks
+	=f.simple_fields_for :images do |image|
+		=render 'image_fields', f: image
+	.links
+		=link_to_add_association 'Add Images', f, :images,class:"button"
+	%br/
+	=f.submit class: "button"
+=tinymce

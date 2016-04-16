@@ -1,0 +1,179 @@
+<header>
+        <div class="row">
+            <h1>Latest Uploads The Last 24 hrs.</h1>
+                <% @practicals.each do |practical|%>
+                    <article class="four columns featured_post">
+                        <h3><%=link_to practical.aim,practical%></h3> 
+                        <% %>
+                        <%=link_to image_tag(practical.images.first.sheet.url,alt:"desc",style:"width:100%;height:200px;"),practical %>
+                        <strong><%=simple_format(practical.description)%></strong>
+
+                        <div class="post_meta">
+                            <i class="fa fa-clock-o" aria-hidden="true"> <%=time_ago_in_words(practical.created_at)%></i>
+                            <i class="fa fa-user" aria-hidden="true" style="margin-left:15px"> Admin</i>
+                            <i class="fa fa-comments" aria-hidden="true" style="margin-left: 15px">5</i>
+                        </div>
+                    </article>
+                <% end %>
+        </div>
+        <div class="row">
+                <% @examnotes.each do |examnote|%>
+                    <article class="four columns featured_post">
+                        <h3><%=link_to examnote.topic,examnote%></h3> 
+                        <% %>
+                       <%=link_to image_tag(examnote.notes.first.page.url,alt:"desc",style:"width:100%;height:200px;"),examnote %>
+                        <p><%=simple_format(examnote.tips)%></p>
+
+                        <div class="post_meta">
+                            <i class="fa fa-clock-o" aria-hidden="true"> <%=time_ago_in_words(examnote.created_at)%></i>
+                            <i class="fa fa-user" aria-hidden="true" style="margin-left:15px"> Admin</i>
+                            <i class="fa fa-comments" aria-hidden="true" style="margin-left: 15px">5</i>
+                        </div>
+                    </article>
+                <% end %>
+        </div>
+        <div class="row">
+                <% @assignments.each do |assignment|%>
+                    <article class="four columns featured_post">
+                        <h3><%=link_to assignment.topic,assignment%></h3> 
+                        <% %>
+                        <%=link_to image_tag(assignment.aimages.first.image.url,alt:"desc",style:"width:100%;height:200px;"),assignment%>
+                        <p><%=simple_format(assignment.description)%></p>
+
+                        <div class="post_meta">
+                            <i class="fa fa-clock-o" aria-hidden="true"> <%=time_ago_in_words(assignment.created_at)%></i>
+                            <i class="fa fa-user" aria-hidden="true" style="margin-left:15px"> Admin</i>
+                            <i class="fa fa-comments" aria-hidden="true" style="margin-left: 15px">5</i>
+                        </div>
+                    </article>
+                <% end %>
+        </div>
+
+</header>
+<div class="section_main">
+
+      <div class="row">
+
+          <section class="eight columns">
+
+          <h2>Team BitNotes</h2>
+
+          <article class="blog_post">
+
+             <div class="three columns">
+             <a href="https://www.facebook.com/cayadav2009" class="th"><%=image_tag 'B',alt:"desc"%></a>
+             </div>
+             <div class="nine columns">
+              <a href="https://www.facebook.com/cayadav2009"><h3>Chaitanya Yadav</h3></a>
+              <p><strong>CEO, BitNotes.INC</strong><br>I am Fresher UG student at Indian Institute of Information Technology. I am Backend And Frontend Developer cum Passionate Cricketer.Web fascinates me and make me feel to have Superpower to Build Cooool Things and Help progress of Mankind!</p>
+              <a href="https://www.facebook.com/cayadav2009"><i class="fa fa-facebook-official" aria-hidden="true"style="font-size:16px; margin-right:15px"> Facebook</i></a>
+             <a href="https://www.facebook.com/cayadav2009"><i class="fa fa-twitter" aria-hidden="true"style="font-size:16px; margin-right:15px"> Twitter</i></a>
+              </div>
+
+          </article>
+
+          <article class="blog_post">
+
+             <div class="three columns">
+             <a href="https://www.facebook.com/affan.ahmadfahmi" class="th"><%=image_tag 'A',alt:"desc"%></a>
+             </div>
+             <div class="nine columns">
+              <a href="https://www.facebook.com/affan.ahmadfahmi"><h3>Affan Ahmed</h3></a>
+              <p><strong>President, BitNotes.INC</strong><br>I am a developer who dreams to build services which are useful to people around me. I believe in working hard for constructive, innovative and creative projects. BitNotes is a part of that dream. I am a UG student at IIITA.
+              I do not believe in excuses. I believe in hard work as the prime solvent of life's problems.</p>
+              <a href="https://www.facebook.com/affan.ahmadfahmi"><i class="fa fa-facebook-official" aria-hidden="true"style="font-size:16px; margin-right:15px"> Facebook</i></a>
+             <a href="#"><i class="fa fa-twitter" aria-hidden="true"style="font-size:16px; margin-right:15px"> Twitter</i></a>
+              </div>
+
+          </article>
+          
+          
+          <article class="blog_post">
+          
+             <div class="three columns">
+             <a href="#" class="th"><%=image_tag 'C.JPG',alt:"desc"%></a>
+             </div>
+             <div class="nine columns">
+              <a href="#"><h3>Rricha Jalota</h3></a>
+              <p><strong>CTO, BitNotes.INC</strong><br>I am an ECE pre-final year undergrad.I love to surround myself with challenges. When I am not coding, I'm either watching korean dramas or reading stuff on net. You might often find me working out a song on my guitar too!
+              </p>
+               <a href="https://www.facebook.com/rrichajalota"><i class="fa fa-facebook-official" aria-hidden="true"style="font-size:16px; margin-right:15px"> Facebook</i></a>
+             <a href="#"><i class="fa fa-twitter" aria-hidden="true"style="font-size:16px; margin-right:15px"> Twitter</i></a>
+              </div>
+              
+          </article>
+          <article class="blog_post">
+          
+             <div class="three columns">
+             <a href="https://www.facebook.com/rahul.soshte" class="th"><%=image_tag 'E',alt:"desc"%></a>
+             </div>
+             <div class="nine columns">
+              <a href="https://www.facebook.com/rahul.soshte"><h3>Rahul Soshte</h3></a>
+              <p><strong>COO, BitNotes.INC</strong><br>Vivamus tortor tellus, rutrum sit amet mollis vel, imperdiet consectetur orci. Mauris pharetra congue enim, et sagittis lectus congue ut. Cum sociis natoque penatibus. Vivamus tortor tellus, rutrum sit amet mollis vel, imperdiet consectetur orci. Mauris pharetra congue enim, et sagittis lectus congue ut. Cum sociis natoque penatibus.</p>
+              <a href="https://www.facebook.com/rahul.soshte"><i class="fa fa-facebook-official" aria-hidden="true"style="font-size:16px; margin-right:15px"> Facebook</i></a>
+             <a href="#"><i class="fa fa-twitter" aria-hidden="true"style="font-size:16px; margin-right:15px"> Twitter</i></a>
+              </div>
+              
+          </article> 
+          <article class="blog_post">
+          
+             <div class="three columns">
+             <a href="#" class="th"><%=image_tag 'D',alt:"desc"%></a>
+             </div>
+             <div class="nine columns">
+              <a href="#"><h3>Vignesh K Subramaniam </h3></a>
+              <p><strong>CFO, BitNotes.INC</strong><br>Vivamus tortor tellus, rutrum sit amet mollis vel, imperdiet consectetur orci. Mauris pharetra congue enim, et sagittis lectus congue ut. Cum sociis natoque penatibus. Vivamus tortor tellus, rutrum sit amet mollis vel, imperdiet consectetur orci. Mauris pharetra congue enim, et sagittis lectus congue ut. Cum sociis natoque penatibus.</p>
+              <a href="https://www.facebook.com/rrichajalota"><i class="fa fa-facebook-official" aria-hidden="true"style="font-size:16px; margin-right:15px"> Facebook</i></a>
+             <a href="#"><i class="fa fa-twitter" aria-hidden="true"style="font-size:16px; margin-right:15px"> Twitter</i></a>
+              </div>
+              
+          </article>
+          
+          </section>
+          
+          <section class="four columns">
+          <h2>What is BitNotes?</h2>
+             <div class="panel">
+             <h3>BitNotes</h3>
+               <p> <strong>So what the fuss is all about?</strong><br>
+                 Well, are you one of those lazy students who waits for the deadline to get started with the assignments? Do you like copying stuff more than actually doing it? Guess what! You are at the right place! </p> 
+               
+              <h3>Stuff For You Guys!</h3>
+
+            <ul class="accordion">
+              <li class="active">
+                <div class="title">
+                  <h5>What do we have for you?</h5>
+                </div>
+                <div class="content">
+                  <p>Bepractical provides a platform for you and your classmates to share exam notes, assignments and question papers all at one place! Get notified for all the deadlines, events and recent stuff that’s going on in your college while you have fun bunking. What more? You can even show off your research work to your peers and add a laurel to your name!</p>
+                </div>
+              </li>
+              <li>
+                <div class="title">
+                  <h5>How Sharing Is Done?</h5>
+                </div>
+                <div class="content">
+                  <p>You Upload Images of the Practicals with some required Info to our Site. We connect you with the Peers who needs your Practical and Help them to Complete Their Practicals.Soooo Simple.!</p>
+                </div>
+              </li>
+              <li>
+                <div class="title">
+                  <h5>What about Exam Paper?</h5>
+                </div>
+                <div class="content">
+                  <p>When Exam Saga arrives we want ourself to to be fully armed with each topic and practice of Archieved papers. Peers who are seniors to you upload Exampaper and We take them to You making your Life Easy.! Damn Cooooool.!</p>
+                </div>
+              </li>
+            </ul>
+
+
+               
+             </div>
+          </section>
+          
+      </div>
+      
+    </div>
+      
+</section>

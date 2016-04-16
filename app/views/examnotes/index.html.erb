@@ -1,0 +1,32 @@
+<header>
+	 <div class="row">
+	 		<%=form_tag(examnotes_path,method: :get) do%>
+				<%=text_field_tag :search,params[:search],class:"form-control",placeholder:"Search Examnotes"%>
+				<br>
+				<%=submit_tag("Search",class:"button")%>
+				<br>
+				<br>
+			<% end%>
+			<%if @query.present?%>
+				<p><strong><%=@examnotes.count%></strong> results found for <strong><%=@query %></strong></p>
+				<br>
+				<br>
+			<%end %>
+			 <h1>Examnotes</h1>
+                <% @examnotes.each do |examnote|%>
+                    <article class="four columns featured_post">
+                        <h3><%=link_to examnote.topic,examnote%></h3> 
+                        <% %>
+                        <%=link_to image_tag(examnote.notes.first.page.url,alt:"desc",style:"width:100%;height:200px;"),examnote %>
+                        <p><%=simple_format(examnote.tips)%></p>
+
+                        <div class="post_meta">
+                            <i class="fa fa-clock-o" aria-hidden="true"> <%=time_ago_in_words(examnote.created_at)%></i>
+                            <i class="fa fa-user" aria-hidden="true" style="margin-left:15px"> Admin</i>
+                            <i class="fa fa-comments" aria-hidden="true" style="margin-left: 15px">5</i>
+                        </div>
+                    </article>
+                <% end %>
+        </div>
+</header>
+

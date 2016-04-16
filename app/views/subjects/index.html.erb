@@ -1,0 +1,40 @@
+<header>
+	 <div class="row">
+ 		<%=form_tag(subjects_path,method: :get) do%>
+			<%=text_field_tag :search,params[:search],class:"form-control",placeholder:"Search Subjects"%>
+			<br>
+			<%=submit_tag("Search",class:"button")%>
+			<br>
+			<br>
+		<% end%>
+		<%if @query.present?%>
+			<p><strong><%=@subjects.count%></strong> results found for <strong><%=@query %></strong></p>
+			<br>
+			<br>
+		<%end %>
+		 <h1>Subjects</h1>
+            <% @subjects.each do |subject|%>
+ 		   		<h4 id="head"><%=subject.name%><small> <%=time_ago_in_words(subject.created_at)%> ago</small></h4>
+				 <%=link_to "Practical", practicals_path(:subject=>subject.id),class:"button" %>
+				 <%=link_to "Examnote", examnotes_path(:subject=>subject.id),class:"button" %>
+				 <%=link_to "Assignment", assignments_path(:subject=>subject.id),class:"button" %>
+				 <%=link_to "Paper", qpapers_path(:subject=>subject.id),class:"button" %>
+				 <%=link_to "Answer Request", requests_path(:subject=>subject.id),class:"button" %>
+				 <%=link_to "Edit",edit_subject_path(subject),class:"button" %>
+				 <%=link_to "Delete", subject,method: :delete,data:{confirm:"Are you sure?"},class:"button" %>
+				 <br>
+				 <br>
+            <% end %>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+=simple_form_for(@examnote,html:{multipart: true}) do |f|
+	=f.input :topic, label:"Topic", class: "form-control",placeholder: "What is this Examnote about?"
+	=f.collection_select :subject_id, Subject.all,:id,:name, {promt: "Choose a Subject or Add Subject"},class:"form-control",label:"Subject"
+	%br/
+	=f.collection_select :college_id, College.all,:id,:name, {promt: "Choose a College or Add College"},class:"form-control",label:"College"
+	%br/
+	=f.input :tips, label:"Tips", input_html:{class:'tinymce'},placeholder:"Give me Some Tips"
+	%br/
+	%h2 Images
+	#tasks
+	=f.simple_fields_for :notes do |note|
+		=render 'note_fields', f: note
+	.links
+		=link_to_add_association 'Add Images', f, :notes,class:"button"
+	%br/
+	=f.submit class: "button"
+=tinymce

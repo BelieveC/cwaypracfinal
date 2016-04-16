@@ -1,0 +1,20 @@
+<header>
+    <h1 class="welcome_text">Edit Subject</h1>    
+</header>
+<section class="section_light">
+    <div class="row" style="padding-top: 20px">
+      	<div class="large-6 large-offset-3 columns">
+      		<% if @subject.errors.any?%>
+					<h2><%= pluralize(@subject.errors.count, "Error")%> prevented this subject from saving</h2>
+					<ul>
+						<% @subject.errors.full_messages.each do |msg| %>
+							<li><%= msg%></li>
+						<% end%>
+					</ul>
+			<% end %>
+			<%=render('form')%>
+			<br>
+			<%=link_to "Back",:back,class:"button"%>
+      	</div>
+    </div>
+</section>

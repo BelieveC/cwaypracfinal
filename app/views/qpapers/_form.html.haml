@@ -1,0 +1,20 @@
+=simple_form_for(@qpaper,html:{multipart: true}) do |f|
+	=f.input :examname, label: "Examname",placeholder:"Aim is first Impression"
+	%br/
+	=f.collection_select :subject_id, Subject.all,:id,:name, {promt: "Choose a Subject or Add Subject"}
+	%br/
+	=f.collection_select :college_id, College.all,:id,:name, {promt: "Choose a Subject or Add Subject"}
+	%br/
+	=f.input :date
+	%br/
+	=f.input :teacher
+	%br/
+	%h2 Images
+	#tasks
+	=f.simple_fields_for :qimages do |qimage|
+		=render 'qimage_fields', f: qimage
+	.links
+		=link_to_add_association 'Add Images', f, :qimages,class:"button"
+	%br/
+	=f.submit class: "button"
+

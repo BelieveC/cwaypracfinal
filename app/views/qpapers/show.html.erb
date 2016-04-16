@@ -1,0 +1,37 @@
+<header>
+    <h1 class="welcome_text"><%= @qpaper.examname %></h1>    
+</header>
+<section class="section_light">
+    <div class="row">
+        <div id="container">
+            <% @qpaper.qimages.each do |qimage| %>
+                <div class='box photo col2'>
+                    <a href="#"><%= image_tag(qimage.image.url,alt:"desc")%></a>
+                </div>
+            <%end%>
+        </div>
+    </div>
+        <div id="container">
+    <h4>Paper Info</h4>
+
+    <div class="row">
+      <div class="twelve columns">
+
+      <dl class="tabs three-up">
+        <dd class="active"><a href="#simple1">Date Of Exam</a></dd>
+        <dd><a href="#simple2">Faculty</a></dd>
+      </dl>
+      <ul class="tabs-content">
+        <li class="active" id="simple1Tab"><%=@qpaper.date%></li>
+        <li id="simple2Tab"><%=simple_format(@qpaper.teacher)%></li>
+      </ul>
+
+      </div>
+    </div>
+    <%= link_to "Edit",edit_qpaper_path(@qpaper),class:"button"%>
+    <%= link_to "Delete",@qpaper,method: :delete,data:{confirm:"Are you sure?"},class:"button"%>
+    <%= link_to "Back",:back,class:"button"%>
+ 	<br>
+</section>
+
+

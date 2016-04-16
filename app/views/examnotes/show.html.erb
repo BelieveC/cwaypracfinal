@@ -1,0 +1,44 @@
+<header>
+    <h1 class="welcome_text"><%= @examnote.topic %></h1>    
+</header>
+<section class="section_light">
+    <div class="row">
+        <div id="container">
+            <% @examnote.notes.each do |note| %>
+                <div class='box photo col2'>
+                    <a href="#"><%= image_tag(note.page.url,alt:"desc")%></a>
+                </div>
+            <%end%>
+        </div>
+    </div>
+        <div id="container">
+    <h4>Practical Info</h4>
+
+    <div class="row">
+      <div class="twelve columns">
+
+      <dl class="tabs three-up">
+        <dd class="active"><a href="#simple1">Topic</a></dd>
+        <dd><a href="#simple2">Tips</a></dd>
+      </dl>
+      <ul class="tabs-content">
+        <li class="active" id="simple1Tab"><%= @examnote.topic %></li>
+        <li id="simple2Tab"><%=simple_format(@examnote.tips)%></li>
+      </ul>
+
+      </div>
+    </div>
+    <%= link_to "Edit",edit_examnote_path(@examnote),class:"button"%>
+    <%= link_to "Delete",@examnote,method: :delete,data:{confirm:"Are you sure?"},class:"button"%>
+    <%= link_to "Back",:back,class:"button"%>
+    <br>
+    <br>
+        <div class="panel">
+            <div class="row">
+                <div class="six colums">
+                    
+                </div>
+            </div>
+        </div>
+</section>
+

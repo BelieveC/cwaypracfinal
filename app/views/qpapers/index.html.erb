@@ -1,0 +1,48 @@
+<header>
+	<div class="row">
+		<%=form_tag(qpapers_path,method: :get) do%>
+			<%=text_field_tag :search,params[:search],class:"form-control",placeholder:"Search Question Papers"%>
+			<br>
+			<%=submit_tag("Search",class:"button")%>
+			<br>
+			<br>
+		<% end%>
+		<%if @query.present?%>
+			<p><strong><%=@qpaper.count%></strong> results found for <strong><%=@query %></strong></p>
+			<br>
+			<br>
+		<%end %>
+		<h1>Question Papers</h1>
+        <% @qpapers.each do |qpaper|%>
+            <article class="four columns featured_post">
+                <h3><%=link_to qpaper.examname,qpaper%></h3> 
+                <% %>
+                <%=image_tag qpaper.qimages.first.image.url,alt:"desc",style:"width:100%;height:200px;" %>
+                <p><%=simple_format(qpaper.teacher)%></p>
+
+                <div class="post_meta">
+                    <i class="fa fa-clock-o" aria-hidden="true"> <%=time_ago_in_words(qpaper.created_at)%></i>
+                    <i class="fa fa-user" aria-hidden="true" style="margin-left:15px"> Admin</i>
+                    <i class="fa fa-comments" aria-hidden="true" style="margin-left: 15px">5</i>
+                </div>
+            </article>
+        <% end %>
+    </div>
+
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

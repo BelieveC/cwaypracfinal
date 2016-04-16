@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BitNotes</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon'%>
+  <%= javascript_include_tag "vendor/modernizr"%>
+  <%= stylesheet_link_tag    "foundation.min" %>
+  <%= stylesheet_link_tag    "main" %>
+  <%= stylesheet_link_tag    "app" %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />
+</head>
+<body>
+  <nav>
+
+    <div class="twelve columns header_nav">
+     <div class="row">
+      
+        <ul id="menu-header" class="nav-bar horizontal">
+        
+         <li><a href="/abouts"><strong>BitNotes</strong></a></li>
+          <li class="has-flyout">
+           <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>New</a><a href="#" class="flyout-toggle"></a>
+            <ul class="flyout"><!-- Flyout Menu -->
+              <li class="has-flyout"><%= link_to "Request",(new_request_path)  %></li>
+              <li class="has-flyout"><%= link_to "College",(new_college_path)  %></li>
+              <li class="has-flyout"><%= link_to "Subject",(new_subject_path)  %></li>
+              <li class="has-flyout"><%= link_to " Practical",(new_practical_path)  %></li>
+              <li class="has-flyout"><%= link_to "Examnote",(new_examnote_path)  %></li>
+              <li class="has-flyout"><%= link_to "Assignment",(new_assignment_path)  %></li>
+              <li class="has-flyout"><%= link_to "Paper",(new_qpaper_path)  %></li>
+            </ul> 
+          </li><!-- END Flyout Menu --> 
+          <li class="has-flyout">
+           <a href="#"><i class="fa fa-file-text" aria-hidden="true"></i>Resources</a><a href="#" class="flyout-toggle"></a>
+            <ul class="flyout"><!-- Flyout Menu -->
+              <li class="has-flyout"><%= link_to "College",colleges_path  %></li>
+              <li class="has-flyout"><%= link_to "Subject",(subjects_path)  %></li>
+              <li class="has-flyout"><%= link_to " Practical",(practicals_path)  %></li>
+              <li class="has-flyout"><%= link_to "Examnote",(examnotes_path)  %></li>
+              <li class="has-flyout"><%= link_to "Assignment",(assignments_path)  %></li>
+              <li class="has-flyout"><%= link_to "Paper",(qpapers_path)  %></li>
+            </ul> 
+          </li><!-- END Flyout Menu -->
+          <li class="has-flyout">
+           <a href="#"><i class="fa fa-upload" aria-hidden="true"></i>MyUploads</a><a href="#" class="flyout-toggle"></a>
+            <ul class="flyout"><!-- Flyout Menu -->
+              <li class="has-flyout"><%= link_to "College","#"  %></li>
+              <li class="has-flyout"><%= link_to "Subject","#"  %></li>
+              <li class="has-flyout"><%= link_to " Practical","#" %></li>
+              <li class="has-flyout"><%= link_to "Examnote","#"  %></li>
+              <li class="has-flyout"><%= link_to "Assignment","#"  %></li>
+              <li class="has-flyout"><%= link_to "Paper","#"  %></li>
+            </ul> 
+          </li><!-- END Flyout Menu -->
+          <li><%=link_to "LogOut","#" %></li>
+        </ul>
+        
+        <script type="text/javascript">
+         //<![CDATA[
+         $('ul#menu-header').nav-bar();
+          //]]>
+        </script>
+        
+      </div>  
+      </div>
+      
+</nav>
+
+<%= yield %>
+<section>
+   
+      <div class="section_dark">
+      <div class="row"> 
+      
+      <h2>Most viewed photos the last 24 hrs.</h2>
+      
+          <div class="two columns">
+          <%=image_tag 'thumb1',alt:"desc" %>
+          </div>
+          
+          <div class="two columns">
+          <%=image_tag 'thumb2',alt:"desc" %>
+          </div>
+          
+          <div class="two columns">
+          <%=image_tag 'thumb3',alt:"desc" %>
+          </div>
+          
+          <div class="two columns">
+          <%=image_tag 'thumb5',alt:"desc" %>
+          </div>
+          
+          <div class="two columns">
+          <%=image_tag 'thumb6',alt:"desc" %>
+          </div>
+          
+          <div class="two columns">
+          <%=image_tag 'thumb4',alt:"desc" %>
+          </div>
+
+      
+      </div>
+      </div>
+      
+    </section>
+<!-- ######################## Footer ######################## -->  
+      
+<footer>
+
+      <div class="row">
+      
+          <div class="twelve columns footer">
+             <a href="https://www.facebook.com/BitNotes4U/"><i class="fa fa-facebook-official" aria-hidden="true"style="font-size:16px; margin-right:15px"> Facebook</i></a>
+             <a href="https://twitter.com/BitnotesFamily"><i class="fa fa-twitter" aria-hidden="true"style="font-size:16px; margin-right:15px"> Twitter</i></a>
+          </div>
+          
+      </div>
+
+</footer>
+<%=javascript_include_tag 'foundation.min.js'%>
+<%=javascript_include_tag 'app.js' %>
+</body>
+</html>
