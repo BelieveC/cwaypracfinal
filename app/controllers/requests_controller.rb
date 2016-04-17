@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
 	before_action :get_request, only:[:show,:edit,:update,:destroy]
 	def index
 		if params[:subject].blank?
-			@requests = Request.all.order("created_at DESC")
+			@requests = Request.all.order("created_at DESC").limit(21)
 		else
 			@requests = Request.where(subject_id: params[:subject]).order("created_at DESC")
 		end
@@ -14,7 +14,7 @@ class RequestsController < ApplicationController
 	end
 	def update
 		if @request.update(request_params)
-			redirect_to requests_path
+			redirect_to requests_path,notice:"Successfully Updated your Requests!"
 		else
 			render('edit')
 		end
@@ -24,14 +24,14 @@ class RequestsController < ApplicationController
 	def create
 		@request = Request.new(request_params)
 		if @request.save
-			redirect_to requests_path
+			redirect_to requests_path,notice:"Successfully added Your Request!"
 		else
 			render 'new'
 		end
 	end
 	def destroy
 		@request.destroy
-		redirect_to requests_path
+		redirect_to requests_path,notice:"Successfully destroyed Your Request!"
 	end
 
 	private

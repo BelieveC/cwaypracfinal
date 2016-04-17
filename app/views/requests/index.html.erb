@@ -1,25 +1,21 @@
-<div class="post_wrapper">
-	<% @requests.each do |request|%>
-	<div id="feed">
-			<h4 id="head"><%=request.name %></h4>
-			<ul class="collapsible popout" data-collapsible="accordion">
-			    <li>
-			      <div class="collapsible-header"><i class="material-icons">whatshot</i>Description</div>
-			      <div class="collapsible-body"><p><%=request.description%></p></div>
-			    </li>
-			</ul>
-			<% if request.type_id==1%>
-				<%= link_to "Respond",new_practical_path,class:"btn" %>
-			<% elsif request.type_id==2%>
-				<%= link_to "Respond",new_examnote_path,class:"btn" %>
-			<% elsif request.type_id==3 %>
-				<%= link_to "Respond",new_assignment_path,class:"btn" %>
-			<% else%>
-				<%= link_to "Respond",new_qpaper_path,class:"btn" %>
-			<% end%>
-			<%= link_to "Edit",edit_request_path(request),class:"btn btn-primary"%>
-			<%= link_to "Delete",request,method: :delete,data:{confirm:"Are you sure?"},class:"btn btn-danger"%>
-			<p id="time">Submitted <strong><%=time_ago_in_words(request.created_at)%></strong> ago</p>
+<header>
+	<div class="row">
+		 <h1>Requests</h1>
+           <% @requests.each do |request|%>
+ 		   		<h4 id="head"><%=request.name %><small> <%=time_ago_in_words(request.created_at)%> ago</small></h4>
+ 		   		<h4><%=simple_format(request.description)%></h4>
+				<% if request.type_id==1%>
+					<%= link_to "Respond",new_practical_path,class:"button" %>
+				<% elsif request.type_id==2%>
+					<%= link_to "Respond",new_examnote_path,class:"button" %>
+				<% elsif request.type_id==3 %>
+					<%= link_to "Respond",new_assignment_path,class:"button" %>
+				<% else%>
+					<%= link_to "Respond",new_qpaper_path,class:"button" %>
+				<% end%>
+				<%= link_to "Edit",edit_request_path(request),class:"button"%>
+				<%= link_to "Delete",request,method: :delete,data:{confirm:"Are you sure?"},class:"button"%>
+			 <br><br>
+            <% end %>
 	</div>
-	<% end %>
-</div>
+</header>

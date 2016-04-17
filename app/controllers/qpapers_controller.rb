@@ -2,7 +2,7 @@ class QpapersController < ApplicationController
 	before_action :get_qpaper,only: [:show,:edit,:update,:destroy]
 	def index
 		if params[:college].blank? && params[:search].blank?
-			@qpapers = Qpaper.all.order("created_at ASC")
+			@qpapers = Qpaper.all.order("created_at DESC").limit(21)
 		elsif params[:college].present?
 			@qpapers = Qpaper.where(college_id: params[:college]).order("created_at ASC")
 		elsif params[:search].present?
@@ -20,7 +20,7 @@ class QpapersController < ApplicationController
 	def create
 		@qpaper = Qpaper.new(qpaper_params)
 		if @qpaper.save
-			redirect_to @qpaper
+			redirect_to @qpaper,notice:"Successfully added Question Paper!"
 		else
 			render 'new'
 		end
@@ -29,14 +29,14 @@ class QpapersController < ApplicationController
 	end
 	def update
 		if @qpaper.update(qpaper_params)
-			redirect_to @qpaper
+			redirect_to @qpaper,notice:"Successfully updated Question Paper!"
 		else
 			render 'edit'
 		end
 	end
 	def destroy
 		@qpaper.destroy
-		redirect_to qpapers_path
+		redirect_to qpapers_path,notice:"Successfully destroyed Question Paper!"
 	end
 
 	private

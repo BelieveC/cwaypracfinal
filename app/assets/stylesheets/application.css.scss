@@ -13,5 +13,12 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
-//= require foundation_and_overrides
+ *= require foundation_and_overrides
  */
+ @import "foundation_and_overrides";
+#alert{
+	margin-top: 44px;
+}
+#downimage{
+	height: 250px;
+}

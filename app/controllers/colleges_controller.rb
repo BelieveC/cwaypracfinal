@@ -6,7 +6,7 @@ class CollegesController < ApplicationController
 
 	def index
 		if params[:search].blank?
-			@colleges = College.all.order("name ASC")
+			@colleges = College.all.order("name ASC").limit(20)
 		else
 			@query = params[:search]
 			@colleges = College.search(params[:search])
@@ -19,7 +19,7 @@ class CollegesController < ApplicationController
 	def create
 		@college = College.new(college_params)
 		if @college.save
-			redirect_to colleges_path
+			redirect_to colleges_path,notice:"Successfully added College Details!"
 		else
 			render('new')
 		end
@@ -30,7 +30,7 @@ class CollegesController < ApplicationController
 
 	def update
 		if @college.update(college_params)
-			redirect_to colleges_path
+			redirect_to colleges_path,notice:"Successfully updated College Details!"
 		else
 			render('edit')
 		end
@@ -38,7 +38,7 @@ class CollegesController < ApplicationController
 
 	def destroy
 		@college.destroy
-		redirect_to colleges_path
+		redirect_to colleges_path,notice:"Successfully updated Destroyed Details!"
 	end
 
 	private

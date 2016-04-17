@@ -5,7 +5,7 @@ class PracticalsController < ApplicationController
 
 	def index
 		if params[:college].blank? && params[:subject].blank? && params[:search].blank?
-			@practicals = Practical.all.order("created_at DESC")
+			@practicals = Practical.all.order("created_at DESC").limit(21)
 		elsif !params[:college].blank?
 			@practicals = Practical.where(college_id: params[:college]).order("created_at DESC")
 		elsif params[:subject].present?
@@ -26,7 +26,7 @@ class PracticalsController < ApplicationController
 	def create
 		@practical = Practical.new(pratical_params)
 		if @practical.save
-			redirect_to @practical
+			redirect_to @practical,notice:"Successfully Created Your Practical!"
 		else
 			render('new')
 		end
@@ -37,7 +37,7 @@ class PracticalsController < ApplicationController
 
 	def update
 		if @practical.update(pratical_params)
-			redirect_to @practical
+			redirect_to @practical,notice:"Successfully Updated Your Practical!"
 		else
 			render('edit')
 		end
@@ -45,7 +45,7 @@ class PracticalsController < ApplicationController
 
 	def destroy
 		@practical.destroy
-		redirect_to practicals_path
+		redirect_to practicals_path,notice:"Successfully Deleted Your Practical!"
 	end
 	private
 		def pratical_params

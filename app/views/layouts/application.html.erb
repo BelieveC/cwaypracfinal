@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,9 +56,9 @@
               <li class="has-flyout"><%= link_to "Paper","#"  %></li>
             </ul> 
           </li><!-- END Flyout Menu -->
+          <li><%=link_to "Requests",requests_path %></li>
           <li><%=link_to "LogOut","#" %></li>
         </ul>
-        
         <script type="text/javascript">
          //<![CDATA[
          $('ul#menu-header').nav-bar();
@@ -68,40 +69,34 @@
       </div>
       
 </nav>
-
+<%if flash.any? %>
+  <div class="success callout" id:"alert" data-closable>
+    <h5><%=flash[:notice]%></h5>
+  </div>
+<% end%>
 <%= yield %>
 <section>
    
       <div class="section_dark">
       <div class="row"> 
       
-      <h2>Most viewed photos the last 24 hrs.</h2>
+      <h2>Share With Friends And Help them Out</h2>
       
-          <div class="two columns">
-          <%=image_tag 'thumb1',alt:"desc" %>
+          <div class="three columns">
+          <%=link_to image_tag('thumb1',alt:"desc",id:"downimage"),new_practical_path %>
           </div>
           
-          <div class="two columns">
-          <%=image_tag 'thumb2',alt:"desc" %>
+          <div class="three columns">
+          <%=link_to image_tag('thumb2',alt:"desc",id:"downimage"),new_examnote_path %>
           </div>
           
-          <div class="two columns">
-          <%=image_tag 'thumb3',alt:"desc" %>
+          <div class="three columns">
+          <%= link_to image_tag('thumb3',alt:"desc",id:"downimage"),new_assignment_path %>
           </div>
           
-          <div class="two columns">
-          <%=image_tag 'thumb5',alt:"desc" %>
+          <div class="three columns">
+          <%= link_to image_tag('thumb4',alt:"desc",id:"downimage"),new_request_path %>
           </div>
-          
-          <div class="two columns">
-          <%=image_tag 'thumb6',alt:"desc" %>
-          </div>
-          
-          <div class="two columns">
-          <%=image_tag 'thumb4',alt:"desc" %>
-          </div>
-
-      
       </div>
       </div>
       

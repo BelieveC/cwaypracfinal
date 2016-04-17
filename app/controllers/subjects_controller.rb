@@ -7,7 +7,7 @@ class SubjectsController < ApplicationController
 
 	def index
 		if params[:search].blank?
-			@subjects = Subject.all.order("name ASC")
+			@subjects = Subject.all.order("name ASC").limit(21)
 		else
 			@query = params[:search]
 			@subjects = Subject.search(params[:search])
@@ -20,7 +20,7 @@ class SubjectsController < ApplicationController
 	def create
 		@subject = Subject.new(subject_params)
 		if @subject.save
-			redirect_to subjects_path
+			redirect_to subjects_path,notice:"Successfully added Subject details!"
 		else
 			render('new')
 		end
@@ -31,7 +31,7 @@ class SubjectsController < ApplicationController
 
 	def update
 		if @subject.update(subject_params)
-			redirect_to subjects_path
+			redirect_to subjects_path,notice:"Successfully updated Subject details!"
 		else
 			render('edit')
 		end
@@ -39,7 +39,7 @@ class SubjectsController < ApplicationController
 
 	def destroy
 		@subject.destroy
-		redirect_to subjects_path
+		redirect_to subjects_path,notice:"Successfully Destroyed Subject details!"
 	end
 
 	private

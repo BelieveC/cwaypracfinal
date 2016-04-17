@@ -2,7 +2,7 @@ class AssignmentsController < ApplicationController
 	before_action :get_assignment,only: [:show,:edit,:update,:destroy]
 	def index
 		if params[:college].blank? && params[:search].blank? && params[:subject].blank?
-			@assignments = Assignment.all.order("created_at ASC")
+			@assignments = Assignment.all.order("created_at DESC").limit(21)
 		elsif params[:college].present?
 			@assignments = Assignment.where(college_id: params[:college]).order("created_at ASC")
 		elsif params[:search].present?
@@ -21,7 +21,7 @@ class AssignmentsController < ApplicationController
 
 	def update
 		if @assignment.update(assignment_params)
-			redirect_to @assignment
+			redirect_to @assignment,notice:"Successfully updated Assignment!"
 		else
 			render('edit')
 		end
@@ -34,7 +34,7 @@ class AssignmentsController < ApplicationController
 	def create
 		@assignment = Assignment.new(assignment_params)
 		if @assignment.save
-			redirect_to @assignment
+			redirect_to @assignment,notice:"Successfully added Assignment!"
 		else
 			render('new')
 		end
@@ -42,7 +42,7 @@ class AssignmentsController < ApplicationController
 
 	def destroy
 		@assignment.destroy
-		redirect_to assignments_path
+		redirect_to assignments_path,notice:"Successfully delete Assignment!"
 	end
 
 	private

@@ -3,7 +3,7 @@ class ExamnotesController < ApplicationController
 
 	def index
 		if params[:college].blank? && params[:subject].blank? && params[:search].blank?
-			@examnotes = Examnote.all.order("created_at DESC")
+			@examnotes = Examnote.all.order("created_at DESC").limit(21)
 		elsif !params[:college].blank?
 			@examnotes = Examnote.where(college_id: params[:college]).order("created_at DESC")
 		elsif params[:subject].present?
@@ -24,7 +24,7 @@ class ExamnotesController < ApplicationController
 	def create
 		@examnote = Examnote.new(examnote_params)
 		if @examnote.save
-			redirect_to @examnote
+			redirect_to @examnote,notice:"Successfully Created Your Examnote!"
 		else
 			render('new')
 		end
@@ -35,7 +35,7 @@ class ExamnotesController < ApplicationController
 
 	def update
 		if @examnote.update(examnote_params)
-			redirect_to @examnote
+			redirect_to @examnote,notice:"Successfully Updated Your Examnote!"
 		else
 			render('edit')
 		end
@@ -43,7 +43,7 @@ class ExamnotesController < ApplicationController
 
 	def destroy
 		@examnote.destroy
-		redirect_to examnotes_path
+		redirect_to examnotes_path,notice:"Successfully Updated Your Examnote!"
 	end
 
 	private
